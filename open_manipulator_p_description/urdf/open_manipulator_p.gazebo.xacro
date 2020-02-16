@@ -1,65 +1,65 @@
 <?xml version="1.0"?>
-<robot>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <!-- ros_control plugin -->
-  <gazebo>
-    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <robotNamespace>open_manipulator_p</robotNamespace>
-      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
-    </plugin>
-  </gazebo> 
+  <xacro:macro name="open_manipulator_p_gazebo_macro" params="name">
 
-  <!-- World -->
-  <gazebo reference="world">
-  </gazebo>
+    <!-- ros_control plugin -->
+    <gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>open_manipulator_p</robotNamespace>
+        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      </plugin>
+    </gazebo>
 
-  <!-- Link1 -->
-  <gazebo reference="link1">
-    <mu1>0.2</mu1>
-    <mu2>0.2</mu2>
-    <material>Gazebo/Grey</material>
-  </gazebo>
+    <!-- Link1 -->
+    <gazebo reference="${name}_link1">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <material>Gazebo/Grey</material>
+    </gazebo>
 
-  <!-- Link2 -->
-  <gazebo reference="link2">
-    <mu1>0.2</mu1>
-    <mu2>0.2</mu2>
-    <material>Gazebo/Grey</material>
-  </gazebo>
+    <!-- Link2 -->
+    <gazebo reference="${name}_link2">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <material>Gazebo/Grey</material>
+    </gazebo>
 
-  <!-- Link3 -->
-  <gazebo reference="link3">
-    <mu1>0.2</mu1>
-    <mu2>0.2</mu2>
-    <material>Gazebo/Grey</material>
-  </gazebo>
+    <!-- Link3 -->
+    <gazebo reference="${name}_link3">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <material>Gazebo/Grey</material>
+    </gazebo>
 
-  <!-- Link4 -->
-  <gazebo reference="link4">
-    <mu1>0.2</mu1>
-    <mu2>0.2</mu2>
-    <material>Gazebo/Grey</material>
-  </gazebo>
+    <!-- Link4 -->
+    <gazebo reference="${name}_link4">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <material>Gazebo/Grey</material>
+    </gazebo>
 
-  <!-- Link5 -->
-  <gazebo reference="link5">
-    <mu1>0.2</mu1>
-    <mu2>0.2</mu2>
-    <material>Gazebo/Grey</material>
-  </gazebo>
+    <!-- Link5 -->
+    <gazebo reference="${name}_link5">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <material>Gazebo/Grey</material>
+    </gazebo>
 
-  <!-- Link6 -->
-  <gazebo reference="link6">
-    <mu1>0.2</mu1>
-    <mu2>0.2</mu2>
-    <material>Gazebo/Grey</material>
-  </gazebo>
+    <!-- Link6 -->
+    <gazebo reference="${name}_link6">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <material>Gazebo/Grey</material>
+    </gazebo>
 
-  <!-- End Link -->
-  <gazebo reference="end_link">
-    <mu1>0.2</mu1>
-    <mu2>0.2</mu2>
-    <material>Gazebo/Grey</material>
-  </gazebo>
+    <!-- End Effector -->
+    <gazebo reference="${name}_end_link">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <material>Gazebo/Grey</material>
+    </gazebo>
+
+  </xacro:macro>
 
 </robot>

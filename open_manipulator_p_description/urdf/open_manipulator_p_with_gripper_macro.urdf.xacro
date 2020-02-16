@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<!-- Revolute-Revolute Manipulator -->
+<robot name="open_manipulator_p" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Import all Gazebo-customization elements, including Gazebo colors -->
+  <xacro:include filename="$(find open_manipulator_p_description)/urdf/open_manipulator_p_with_gripper.gazebo.xacro"/>
+
+  <xacro:include filename="$(find open_manipulator_p_description)/urdf/open_manipulator_p_macro.urdf.xacro"/>
+
+  <xacro:macro name="open_manipulator_p_with_gripper_macro" params="name parent *origin">
+
+    <xacro:open_manipulator_p_with_gripper_gazebo_macro name="${name}"/>
+
+    <xacro:open_manipulator_p_macro parent="${parent}" name="${name}">
+      <xacro:insert_block name="origin"/>
+    </xacro:open_manipulator_p_macro>
+
+    <!-- Joint to attach the gripper -->
+    <joint name="${name}_end_effector_joint" type="fixed">
+      <parent link="${name}_end_link"/>
+      <child link="${name}_gripper_main_link"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+    </joint>
+
+    <!-- gripper main link -->
+    <link name="${name}_gripper_main_link">
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://open_manipulator_p_description/meshes/gripper_main_link.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://open_manipulator_p_description/meshes/gripper_main_link.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="grey"/>
+      </visual>
+
+      <inertial>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <mass value="0.509"/>
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+      </inertial>
+    </link>
+
+    <!-- gripper joint -->
+    <joint name="${name}_gripper" type="revolute">
+      <axis xyz="0 0 -1"/>
+      <origin xyz="0.0552 -0.0460 0" rpy="0 0 ${45.0*pi/180.0}"/>
+      <!-- <origin xyz="0.0552 -0.0370 0" rpy="0 0 0"/> -->
+      <parent link="${name}_gripper_main_link"/>
+      <child link="${name}_gripper_link"/>
+      <limit velocity="6.5" effort="1000" lower="0.0" upper="${740.0/2048.0*pi}"/>
+      <dynamics damping="0.1" friction="0.0"/>
+    </joint>
+
+    <!-- Transmission gripper -->
+    <xacro:SimpleTransmission n="_gripper" joint="${name}_gripper"/>
+
+    <!-- gripper link -->
+    <link name="${name}_gripper_link">
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://open_manipulator_p_description/meshes/gripper_link.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="grey"/>
+      </collision>
+
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://open_manipulator_p_description/meshes/gripper_link.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="grey"/>
+      </visual>
+
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.013"/>
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+      </inertial>
+    </link>
+
+    <!-- gripper joint 1 -->
+    <joint name="${name}_gripper_sub" type="revolute">
+      <axis xyz="0 0 1"/>
+      <origin xyz="0.0552 0.0460 0" rpy="0 0 ${-45.0*pi/180.0}"/>
+      <!-- <origin xyz="0.0552 0.0370 0" rpy="0 0 0"/> -->
+      <parent link="${name}_gripper_main_link"/>
+      <child link="${name}_gripper_sub_link"/>
+      <limit velocity="6.5" effort="1000" lower="0.0" upper="${740.0/2048.0*pi}"/>
+      <dynamics damping="0.1" friction="0.0"/>
+    </joint>
+
+    <!-- Transmission gripper -->
+    <xacro:SimpleTransmission n="_gripper_sub" joint="${name}_gripper_sub"/>
+
+    <!-- gripper 1 link -->
+    <link name="${name}_gripper_sub_link">
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://open_manipulator_p_description/meshes/gripper_sub_link.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="grey"/>
+      </collision>
+
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://open_manipulator_p_description/meshes/gripper_sub_link.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="grey"/>
+      </visual>
+
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.013"/>
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+      </inertial>
+    </link>
+
+    <!-- gripper main fixed joint-->
+    <joint name="${name}_gripper_main_fixed" type="fixed">
+      <parent link="${name}_gripper_main_link"/>
+      <child link="${name}_end_effector"/>
+      <origin xyz="0.14 0.0 0.0" rpy="0 0 0"/>
+    </joint>
+
+    <!-- End Effector -->
+    <link name="${name}_end_effector">
+      <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.01 0.01 0.01"/>
+        </geometry>
+        <material name="red"/>
+      </visual>
+
+      <inertial>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <mass value="0.001"/>
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+      </inertial>
+    </link>
+  </xacro:macro>
+
+</robot>
