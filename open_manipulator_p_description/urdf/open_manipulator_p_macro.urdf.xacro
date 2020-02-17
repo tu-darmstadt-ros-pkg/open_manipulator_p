@@ -23,6 +23,8 @@
   </xacro:macro>
 
   <xacro:macro name="open_manipulator_p_macro" params="name parent *origin">
+      
+    <xacro:open_manipulator_p_gazebo_macro name="${name}"/>
 
     <joint name="${name}_fixed_joint" type="fixed">
       <xacro:insert_block name="origin"/>

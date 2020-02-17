@@ -5,27 +5,25 @@
 
   <xacro:macro name="open_manipulator_p_with_gripper_gazebo_macro" params="name">
 
-    <xacro:open_manipulator_p_gazebo_macro name="${name}"/>
-
     <!-- gripper main link -->
     <gazebo reference="${name}_gripper_main_link">
       <mu1>0.2</mu1>
       <mu2>0.2</mu2>
-      <material>Gazebo/Grey</material>
+      <material>Gazebo/DarkGrey</material>
     </gazebo>
 
     <!-- gripper link -->
     <gazebo reference="${name}_gripper_link">
       <mu1>0.2</mu1>
       <mu2>0.2</mu2>
-      <material>Gazebo/Grey</material>
+      <material>Gazebo/DarkGrey</material>
     </gazebo>
 
     <!-- gripper 1 link -->
     <gazebo reference="${name}_gripper_sub_link">
       <mu1>0.2</mu1>
       <mu2>0.2</mu2>
-      <material>Gazebo/Grey</material>
+      <material>Gazebo/DarkGrey</material>
     </gazebo>
 
     <!-- End Effector -->
