@@ -23,24 +23,17 @@
   </xacro:macro>
 
   <xacro:macro name="open_manipulator_p_macro" params="name parent *origin">
-      
+
     <xacro:open_manipulator_p_gazebo_macro name="${name}"/>
 
     <joint name="${name}_fixed_joint" type="fixed">
       <xacro:insert_block name="origin"/>
       <parent link="${parent}"/>
-      <child link="${name}_mount_link"/>
+      <child link="${name}_link_0"/>
     </joint>
 
-    <link name="${name}_mount_link"></link>
-
-    <joint name="${name}_joint0" type="fixed">
-      <parent link="${name}_mount_link"/>
-      <child link="${name}_link1"/>
-    </joint>
-
-    <!-- link 1 -->
-    <link name="${name}_link1">
+    <!-- link 0 -->
+    <link name="${name}_link_0">
       <collision>
         <origin xyz="0 0 0.063" rpy="0 0 0" />
         <geometry>
@@ -64,21 +57,21 @@
       </inertial>
     </link>
 
-    <!-- Joint 1 -->
-    <joint name="${name}_joint1" type="revolute">
-      <parent link="${name}_link1"/>
-      <child link="${name}_link2"/>
+    <!-- Joint 0 -->
+    <joint name="${name}_joint_0" type="revolute">
+      <parent link="${name}_link_0"/>
+      <child link="${name}_link_1"/>
       <origin xyz="0.0 0.0 0.126" rpy="0 0 0"/>
       <axis xyz="0 0 1"/>
       <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}"/>
       <dynamics damping="0.7"/>
     </joint>
 
-    <!-- Transmission 1 -->
-    <xacro:SimpleTransmission n="1" joint="${name}_joint1"/>
+    <!-- Transmission 0 -->
+    <xacro:SimpleTransmission n="0" joint="${name}_joint_0"/>
 
-    <!-- link 2 -->
-    <link name="${name}_link2">
+    <!-- link 1 -->
+    <link name="${name}_link_1">
       <collision>
         <origin xyz="0 0 0.03" rpy="0 0 0" />
         <geometry>
@@ -103,21 +96,21 @@
       </inertial>
     </link>
 
-    <!-- Joint 2 -->
-    <joint name="${name}_joint2" type="revolute">
-      <parent link="${name}_link2"/>
-      <child link="${name}_link3"/>
+    <!-- Joint 1 -->
+    <joint name="${name}_joint_1" type="revolute">
+      <parent link="${name}_link_1"/>
+      <child link="${name}_link_2"/>
       <origin xyz="0.0 0.0 0.033" rpy="0 0 0"/>
       <axis xyz="0 1 0"/>
       <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}"/>
       <dynamics damping="0.7"/>
     </joint>
 
-    <!-- Transmission 2 -->
-    <xacro:SimpleTransmission n="2" joint="${name}_joint2"/>
+    <!-- Transmission 1 -->
+    <xacro:SimpleTransmission n="1" joint="${name}_joint_1"/>
 
-    <!-- link 3 -->
-    <link name="${name}_link3">
+    <!-- link 2 -->
+    <link name="${name}_link_2">
       <collision>
         <origin xyz="0.0 0.07 0.01" rpy="0 0 0" />
         <geometry>
@@ -169,21 +162,21 @@
       </inertial>
     </link>
 
-    <!-- Joint 3 -->
-    <joint name="${name}_joint3" type="revolute">
-      <parent link="${name}_link3"/>
-      <child link="${name}_link4"/>
+    <!-- Joint 2 -->
+    <joint name="${name}_joint_2" type="revolute">
+      <parent link="${name}_link_2"/>
+      <child link="${name}_link_3"/>
       <origin xyz="0.03000 0.0 0.26400" rpy="0 0 0"/>
       <axis xyz="0 1 0"/>
       <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}"/>
       <dynamics damping="0.7"/>
     </joint>
 
-    <!-- Transmission 3 -->
-    <xacro:SimpleTransmission n="3" joint="${name}_joint3"/>
+    <!-- Transmission 2 -->
+    <xacro:SimpleTransmission n="2" joint="${name}_joint_2"/>
 
-    <!-- link 4 -->
-    <link name="${name}_link4">
+    <!-- link 3 -->
+    <link name="${name}_link_3">
       <collision>
         <origin xyz="0.01 0.06 0.01" rpy="0 ${pi/4} 0" />
         <geometry>
@@ -228,21 +221,21 @@
       </inertial>
     </link>
 
-    <!-- Joint 4 -->
-    <joint name="${name}_joint4" type="revolute">
-      <parent link="${name}_link4"/>
-      <child link="${name}_link5"/>
+    <!-- Joint 3 -->
+    <joint name="${name}_joint_3" type="revolute">
+      <parent link="${name}_link_3"/>
+      <child link="${name}_link_4"/>
       <origin xyz="0.19500 0.0 0.03000" rpy="0 0 0"/>
       <axis xyz="1 0 0"/>
       <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}"/>
       <dynamics damping="0.7"/>
     </joint>
 
-    <!-- Transmission 4 -->
-    <xacro:SimpleTransmission n="4" joint="${name}_joint4"/>
+    <!-- Transmission 3 -->
+    <xacro:SimpleTransmission n="3" joint="${name}_joint_3"/>
 
-    <!-- link 5 -->
-    <link name="${name}_link5">
+    <!-- link 4 -->
+    <link name="${name}_link_4">
       <collision>
         <origin xyz="0.06 0 0.0" rpy="0 0 0" />
         <geometry>
@@ -267,21 +260,21 @@
       </inertial>
     </link>
 
-    <!-- Joint 5 -->
-    <joint name="${name}_joint5" type="revolute">
-      <parent link="${name}_link5"/>
-      <child link="${name}_link6"/>
+    <!-- Joint 4 -->
+    <joint name="${name}_joint_4" type="revolute">
+      <parent link="${name}_link_4"/>
+      <child link="${name}_link_5"/>
       <origin xyz="0.06300 0.00 0.00000" rpy="0 0 0"/>
       <axis xyz="0 1 0"/>
       <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}"/>
       <dynamics damping="0.7"/>
     </joint>
 
-    <!-- Transmission 5 -->
-    <xacro:SimpleTransmission n="5" joint="${name}_joint5"/>
+    <!-- Transmission 4 -->
+    <xacro:SimpleTransmission n="4" joint="${name}_joint_4"/>
 
-    <!-- link 6 -->
-    <link name="${name}_link6">
+    <!-- link 5 -->
+    <link name="${name}_link_5">
       <collision>
         <origin xyz="0.005 0.045 0.0" rpy="0 0 0" />
         <geometry>
@@ -327,9 +320,9 @@
       </inertial>
     </link>
 
-    <!-- Joint 6 -->
-    <joint name="${name}_joint6" type="revolute">
-      <parent link="${name}_link6"/>
+    <!-- Joint 5 -->
+    <joint name="${name}_joint_5" type="revolute">
+      <parent link="${name}_link_5"/>
       <child link="${name}_end_link"/>
       <origin xyz="0.12300 0.000 0.00000" rpy="0 0 0"/>
       <axis xyz="1 0 0"/>
@@ -337,8 +330,8 @@
       <dynamics damping="0.7"/>
     </joint>
 
-    <!-- Transmission 6 -->
-    <xacro:SimpleTransmission n="6" joint="${name}_joint6"/>
+    <!-- Transmission 5 -->
+    <xacro:SimpleTransmission n="5" joint="${name}_joint_5"/>
 
     <!-- end link -->
     <link name="${name}_end_link">
