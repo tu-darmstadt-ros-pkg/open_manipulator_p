@@ -4,13 +4,14 @@
   <xacro:macro name="open_manipulator_p_gazebo_macro" params="name">
 
     <!-- Gazebo ros control for arm joints -->
-    <gazebo>
+    <!-- Moved outside -->
+<!--    <gazebo>
       <plugin name="gazebo_ros_control_select_joints" filename="libgazebo_ros_control_select_joints.so">
         <robotNamespace>manipulator_arm_control</robotNamespace>
-        <joints>${name}_joint_0 ${name}_joint_1 ${name}_joint_2 ${name}_joint_3 ${name}_joint_4 ${name}_joint_5 ${name}_gripper ${name}_gripper_sub</joints>
+        <joints>${name}_joint_0 ${name}_joint_1 ${name}_joint_2 ${name}_joint_3 ${name}_joint_4 ${name}_joint_5</joints>
         <eStopTopic>/ui_emergency_stop</eStopTopic>
       </plugin>
-    </gazebo>
+    </gazebo>-->
 
     <!-- Link 0 -->
     <gazebo reference="${name}_link_0">
