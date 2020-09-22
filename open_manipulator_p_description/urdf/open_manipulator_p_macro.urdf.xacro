@@ -63,7 +63,7 @@
       <child link="${name}_link_1"/>
       <origin xyz="0.0 0.0 0.126" rpy="0 0 0"/>
       <axis xyz="0 0 1"/>
-      <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}"/>
+      <limit velocity="6.5" effort="1000" lower="${-178 * pi/180}" upper="${178 * pi/180}"/>
       <dynamics damping="0.7"/>
     </joint>
 
@@ -102,7 +102,7 @@
       <child link="${name}_link_2"/>
       <origin xyz="0.0 0.0 0.033" rpy="0 0 0"/>
       <axis xyz="0 1 0"/>
-      <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}"/>
+      <limit velocity="6.5" effort="1000" lower="${-104 * pi/180}" upper="${104 * pi/180}"/>
       <dynamics damping="0.7"/>
     </joint>
 
@@ -168,7 +168,7 @@
       <child link="${name}_link_3"/>
       <origin xyz="0.03000 0.0 0.26400" rpy="0 0 0"/>
       <axis xyz="0 1 0"/>
-      <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}"/>
+      <limit velocity="6.5" effort="1000" lower="${-124 * pi/180}" upper="${85 * pi/180}"/>
       <dynamics damping="0.7"/>
     </joint>
 
@@ -227,7 +227,7 @@
       <child link="${name}_link_4"/>
       <origin xyz="0.19500 0.0 0.03000" rpy="0 0 0"/>
       <axis xyz="1 0 0"/>
-      <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}"/>
+      <limit velocity="6.5" effort="1000" lower="${-178 * pi/180}" upper="${178 * pi/180}"/>
       <dynamics damping="0.7"/>
     </joint>
 
@@ -266,7 +266,7 @@
       <child link="${name}_link_5"/>
       <origin xyz="0.06300 0.00 0.00000" rpy="0 0 0"/>
       <axis xyz="0 1 0"/>
-      <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}"/>
+      <limit velocity="6.5" effort="1000" lower="${-88 * pi/180}" upper="${88 * pi/180}"/>
       <dynamics damping="0.7"/>
     </joint>
 
@@ -326,7 +326,7 @@
       <child link="${name}_end_link"/>
       <origin xyz="0.12300 0.000 0.00000" rpy="0 0 0"/>
       <axis xyz="1 0 0"/>
-      <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}"/>
+      <limit velocity="6.5" effort="1000" lower="${-176 * pi/180}" upper="${176 * pi/180}"/>
       <dynamics damping="0.7"/>
     </joint>
 
