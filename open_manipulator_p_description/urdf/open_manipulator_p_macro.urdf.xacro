@@ -112,14 +112,14 @@
     <!-- link 2 -->
     <link name="${name}_link_2">
       <collision>
-        <origin xyz="0.0 0.07 0.01" rpy="0 0 0" />
+        <origin xyz="0.0 0.065 0.01" rpy="0 0 0" />
         <geometry>
           <box size="0.06 0.02 0.09" />
         </geometry>
       </collision>
 
       <collision>
-        <origin xyz="0.0 -0.07 0.01" rpy="0 0 0" />
+        <origin xyz="0.0 -0.065 0.01" rpy="0 0 0" />
         <geometry>
           <box size="0.06 0.02 0.09" />
         </geometry>
@@ -128,7 +128,7 @@
       <collision>
         <origin xyz="0.0 0.0 0.045" rpy="0 0 0" />
         <geometry>
-          <box size="0.06 0.16 0.02" />
+          <box size="0.06 0.15 0.02" />
         </geometry>
       </collision>
 
