@@ -26,7 +26,7 @@
     
     <xacro:open_manipulator_p_gazebo_macro name="${name}"/>
     
-    <xacro:arg name="use_depth_filter_geometry" default="false"/>
+    <xacro:arg name="use_self_filter_geometry" default="false"/>
 
     <joint name="${name}_fixed_joint" type="fixed">
       <xacro:insert_block name="origin"/>
@@ -170,8 +170,8 @@
         <!--<inertia ixx="0.01111021" ixy="0.00001331" ixz="-0.00134208" iyy="0.01046642" iyz="0.00016235" izz="0.00202081" />-->
       </inertial>
 
-      <!-- Depth Filter Geometry -->
-      <xacro:if value="$(arg use_depth_filter_geometry)">
+      <!-- Filter Geometry -->
+      <xacro:if value="$(arg use_self_filter_geometry)">
         <collision>
           <origin xyz="0.0 0.0 0.1" rpy="0 0 0" />
           <geometry>
@@ -246,8 +246,8 @@
         <!--<inertia ixx="0.00096726" ixy="0.00004383" ixz="-0.00002771" iyy="0.00318801" iyz="0.00000627" izz="0.00341484" />-->
       </inertial>
 
-      <!-- Depth Filter Geometry -->
-      <xacro:if value="$(arg use_depth_filter_geometry)">
+      <!-- Filter Geometry -->
+      <xacro:if value="$(arg use_self_filter_geometry)">
         <collision>
           <origin xyz="-0.02 0.0 0.02" rpy="${pi/2} 0 0" />
           <geometry>
@@ -309,8 +309,8 @@
         <!--<inertia ixx="0.00030285" ixy="0.00000761" ixz="0.00000031" iyy="0.00022339" iyz="-0.00000001" izz="0.00039766" />-->
       </inertial>
 
-      <!-- Depth Filter Geometry -->
-      <xacro:if value="$(arg use_depth_filter_geometry)">
+      <!-- Filter Geometry -->
+      <xacro:if value="$(arg use_self_filter_geometry)">
         <collision>
           <origin xyz="0.08 0.0 0.0" rpy="0 0 0" />
           <geometry>
@@ -395,8 +395,8 @@
 
     <!-- end link -->
     <link name="${name}_end_link">
-      <!-- Depth Filter Geometry -->
-      <xacro:if value="$(arg use_depth_filter_geometry)">
+      <!-- Filter Geometry -->
+      <xacro:if value="$(arg use_self_filter_geometry)">
         <collision>
           <origin xyz="0.05 0.0 0.0" rpy="0 ${pi/2} 0" />
           <geometry>
